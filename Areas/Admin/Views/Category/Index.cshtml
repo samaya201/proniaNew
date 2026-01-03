@@ -1,0 +1,36 @@
+﻿@model List<Category>
+<div class="container" >
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+        <h2>Categories</h2>
+        <a class="btn btn-primary my-3" asp-area="Admin" asp-controller="Category" asp-action="Create">Add New Category</a>
+            <table class="table table-striped text-center">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var category in Model)
+                {
+                    <tr>
+                        <th scope="row">@category.Id</th>
+                        <td>@category.Name</td>
+                        <td>
+
+                            <a class="btn btn-warning" asp-action="Update" asp-route-id="@category.Id">Update</a>
+                            <a asp-action="Delete" asp-route-id="@category.Id" class="btn btn-danger deleteBtn">Delete</a>
+
+                        </td>
+                    </tr>
+                    
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+    </div>
+</div>
