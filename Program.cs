@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Pronia.Abstraction;
 using Pronia.Context;
+using Pronia.Services;
 
 namespace Pronia
 {
@@ -23,7 +25,7 @@ namespace Pronia
                 options.Password.RequireDigit = true;
                 options.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
-
+            builder.Services.AddScoped<IEmailService, EmailService>();
             var app = builder.Build();
             app.UseStaticFiles();
             app.UseRouting();
