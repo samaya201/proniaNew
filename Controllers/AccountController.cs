@@ -57,7 +57,7 @@ public class AccountController(UserManager<AppUser> _userManager,SignInManager<A
         return RedirectToAction("Index", "Home");
 
     }
-    public IActionResult Login()
+     public IActionResult Login()
     {
         return View();
     }

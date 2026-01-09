@@ -12,6 +12,7 @@ namespace Pronia
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddControllersWithViews();
+
             builder.Services.AddDbContext<Context.AppDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
@@ -25,6 +26,7 @@ namespace Pronia
                 options.Password.RequireDigit = true;
                 options.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+            builder.Services.AddScoped<IBasketService, BasketService>();
             builder.Services.AddScoped<IEmailService, EmailService>();
             var app = builder.Build();
             app.UseStaticFiles();
